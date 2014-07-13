@@ -20,7 +20,7 @@ namespace LiveSplit.Delta
 
         public string Description
         {
-            get { return ""; }
+            get { return "Displays the current delta to a comparison."; }
         }
 
         public ComponentCategory Category

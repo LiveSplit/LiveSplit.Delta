@@ -55,8 +55,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DeltaFactory.cs" />
+    <Compile Include="UI\Components\DeltaFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TimeFormatters\DeltaComponentFormatter.cs" />
+    <Compile Include="UI\Components\DeltaComponent.cs" />
+    <Compile Include="UI\Components\DeltaSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Components\DeltaSettings.Designer.cs">
+      <DependentUpon>DeltaSettings.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LiveSplit.Core\LiveSplit.Core.csproj">
@@ -70,8 +78,11 @@
       <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="UI\" />
+    <EmbeddedResource Include="UI\Components\DeltaSettings.resx">
+      <DependentUpon>DeltaSettings.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
