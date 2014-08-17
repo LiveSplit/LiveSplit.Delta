@@ -44,12 +44,13 @@ namespace LiveSplit.UI.Components
 
             TextColor = Color.FromArgb(255, 255, 255);
             OverrideTextColor = false;
-            Accuracy = TimeAccuracy.Seconds;
+            Accuracy = TimeAccuracy.Tenths;
             BackgroundColor = Color.Transparent;
             BackgroundColor2 = Color.Transparent;
             BackgroundGradient = GradientType.Plain;
             Comparison = "Current Comparison";
             Display2Rows = false;
+            DropDecimals = true;
 
             chkOverrideTextColor.DataBindings.Add("Checked", this, "OverrideTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnTextColor.DataBindings.Add("BackColor", this, "TextColor", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -61,7 +62,7 @@ namespace LiveSplit.UI.Components
             cmbComparison.SelectedIndexChanged += cmbComparison_SelectedIndexChanged;
             cmbComparison.DataBindings.Add("SelectedItem", this, "Comparison", false, DataSourceUpdateMode.OnPropertyChanged);
             chkDropDecimals.DataBindings.Add("Checked", this, "DropDecimals", false, DataSourceUpdateMode.OnPropertyChanged);
-            this.Load += PossibleTimeSaveSettings_Load;
+            this.Load += DeltaSettings_Load;
 
             rdoSeconds.CheckedChanged += rdoSeconds_CheckedChanged;
             rdoHundredths.CheckedChanged += rdoHundredths_CheckedChanged;
@@ -78,7 +79,7 @@ namespace LiveSplit.UI.Components
             Comparison = cmbComparison.SelectedItem.ToString();
         }
 
-        void PossibleTimeSaveSettings_Load(object sender, EventArgs e)
+        void DeltaSettings_Load(object sender, EventArgs e)
         {
             chkOverrideTextColor_CheckedChanged(null, null);
             cmbComparison.Items.Clear();
@@ -98,6 +99,7 @@ namespace LiveSplit.UI.Components
             else
             {
                 chkTwoRows.Enabled = true;
+                chkTwoRows.DataBindings.Clear();
                 chkTwoRows.DataBindings.Add("Checked", this, "Display2Rows", false, DataSourceUpdateMode.OnPropertyChanged);
             }
         }

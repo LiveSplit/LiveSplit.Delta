@@ -41,9 +41,9 @@ namespace LiveSplit.Delta
         public string XMLURL
         {
 #if RELEASE_CANDIDATE
-            get { return "http://livesplit.org/update_rc_sdhjdop/Components/update.LiveSplit.DeltaComponent.xml"; }
+            get { return "http://livesplit.org/update_rc_sdhjdop/Components/update.LiveSplit.Delta.xml"; }
 #else
-            get { return "http://livesplit.org/update/Components/update.LiveSplit.DeltaComponent.xml"; }
+            get { return "http://livesplit.org/update/Components/update.LiveSplit.Delta.xml"; }
 #endif
         }
 
@@ -58,7 +58,7 @@ namespace LiveSplit.Delta
 
         public Version Version
         {
-            get { return Version.Parse("1.0.6"); }
+            get { return Version.Parse("1.0.0"); }
         }
     }
 }

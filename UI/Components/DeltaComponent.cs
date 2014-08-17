@@ -148,31 +148,39 @@ namespace LiveSplit.UI.Components
             InternalComponent.LongestString = componentName;
             InternalComponent.NameLabel.Text = componentName;
 
-
+            var useLiveDelta = false;
             if (state.CurrentPhase == TimerPhase.Running || state.CurrentPhase == TimerPhase.Paused)
             {
                 TimeSpan? delta = LiveSplitStateHelper.GetLastDelta(state, state.CurrentSplitIndex, comparison, state.CurrentTimingMethod);
                 var liveDelta = state.CurrentTime[state.CurrentTimingMethod] - state.CurrentSplit.Comparisons[comparison][state.CurrentTimingMethod];
                 if (liveDelta > delta || (delta == null && liveDelta > TimeSpan.Zero))
+                {
                     delta = liveDelta;
+                    useLiveDelta = true;
+                }
                 InternalComponent.TimeValue = delta;
             }
             else if (state.CurrentPhase == TimerPhase.Ended)
             {
-                InternalComponent.TimeValue = state.Run.Last().Comparisons[comparison][state.CurrentTimingMethod] - state.Run.Last().SplitTime[state.CurrentTimingMethod];
+                InternalComponent.TimeValue = state.Run.Last().SplitTime[state.CurrentTimingMethod] - state.Run.Last().Comparisons[comparison][state.CurrentTimingMethod];
             }
             else
             {
                 InternalComponent.TimeValue = null;
             }
 
-            var color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, -1, state.CurrentSplitIndex, comparison, state.CurrentTimingMethod);
+            var color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, -1, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), comparison, state.CurrentTimingMethod);
             if (color == null)
                 color = Settings.OverrideTextColor ? Settings.TextColor : state.LayoutSettings.TextColor;
             InternalComponent.ValueLabel.ForeColor = color.Value;
 
             Cache.Restart();
             Cache["NameValue"] = InternalComponent.NameLabel.Text;
+            if (Cache.HasChanged)
+            {
+                InternalComponent.AlternateNameText.Clear();
+                InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
+            }
             Cache["TimeValue"] = InternalComponent.ValueLabel.Text;
             Cache["TimeColor"] = InternalComponent.ValueLabel.ForeColor.ToArgb();
 
@@ -180,6 +188,10 @@ namespace LiveSplit.UI.Components
             {
                 invalidator.Invalidate(0, 0, width, height);
             }
+        }
+
+        public void Dispose()
+        {
         }
     }
 }
