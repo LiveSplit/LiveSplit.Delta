@@ -19,8 +19,6 @@ namespace LiveSplit.UI.Components
         public DeltaSettings Settings { get; set; }
         private DeltaComponentFormatter Formatter { get; set; }
 
-        public GraphicsCache Cache { get; set; }
-
         public float PaddingTop { get { return InternalComponent.PaddingTop; } }
         public float PaddingLeft { get { return InternalComponent.PaddingLeft; } }
         public float PaddingBottom { get { return InternalComponent.PaddingBottom; } }
@@ -39,7 +37,6 @@ namespace LiveSplit.UI.Components
             };
             Formatter = new DeltaComponentFormatter(Settings.Accuracy, Settings.DropDecimals);
             InternalComponent = new InfoTimeComponent(null, null, Formatter);
-            Cache = new GraphicsCache();
             state.ComparisonRenamed += state_ComparisonRenamed;
         }
 
@@ -147,9 +144,14 @@ namespace LiveSplit.UI.Components
             if (!state.Run.Comparisons.Contains(comparison))
                 comparison = state.CurrentComparison;
             var comparisonName = comparison.StartsWith("[Race] ") ? comparison.Substring(7) : comparison;
-            var componentName = comparisonName;
-            InternalComponent.LongestString = componentName;
-            InternalComponent.NameLabel.Text = componentName;
+
+            if (InternalComponent.InformationName != comparisonName)
+            {
+                InternalComponent.AlternateNameText.Clear();
+                InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
+            }
+            InternalComponent.LongestString = comparisonName;
+            InternalComponent.InformationName = comparisonName;
 
             var useLiveDelta = false;
             if (state.CurrentPhase == TimerPhase.Running || state.CurrentPhase == TimerPhase.Paused)
@@ -177,20 +179,7 @@ namespace LiveSplit.UI.Components
                 color = Settings.OverrideTextColor ? Settings.TextColor : state.LayoutSettings.TextColor;
             InternalComponent.ValueLabel.ForeColor = color.Value;
 
-            Cache.Restart();
-            Cache["NameValue"] = InternalComponent.NameLabel.Text;
-            if (Cache.HasChanged)
-            {
-                InternalComponent.AlternateNameText.Clear();
-                InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
-            }
-            Cache["TimeValue"] = InternalComponent.ValueLabel.Text;
-            Cache["TimeColor"] = InternalComponent.ValueLabel.ForeColor.ToArgb();
-
-            if (invalidator != null && Cache.HasChanged)
-            {
-                invalidator.Invalidate(0, 0, width, height);
-            }
+            InternalComponent.Update(invalidator, state, width, height, mode);
         }
 
         public void Dispose()
