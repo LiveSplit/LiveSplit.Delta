@@ -174,7 +174,7 @@ namespace LiveSplit.UI.Components
                 InternalComponent.TimeValue = null;
             }
 
-            var color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, -1, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), comparison, state.CurrentTimingMethod);
+            var color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, false, comparison, state.CurrentTimingMethod);
             if (color == null)
                 color = Settings.OverrideTextColor ? Settings.TextColor : state.LayoutSettings.TextColor;
             InternalComponent.ValueLabel.ForeColor = color.Value;
