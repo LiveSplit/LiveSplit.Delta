@@ -80,6 +80,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <EmbeddedResource Include="UI\Components\DeltaSettings.ja-JP.resx">
+      <DependentUpon>DeltaSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Components\DeltaSettings.resx">
       <DependentUpon>DeltaSettings.cs</DependentUpon>
     </EmbeddedResource>
