@@ -9,52 +9,20 @@ namespace LiveSplit.Delta
 {
     public class DeltaFactory : IComponentFactory
     {
-        public string ComponentName
-        {
-            get { return "Delta"; }
-        }
+        public string ComponentName => "Delta";
 
-        public string Description
-        {
-            get { return "Displays the current delta to a comparison."; }
-        }
+        public string Description => "Displays the current delta to a comparison.";
 
-        public ComponentCategory Category
-        {
-            get { return ComponentCategory.Information; }
-        }
+        public ComponentCategory Category => ComponentCategory.Information;
 
-        public IComponent Create(LiveSplitState state)
-        {
-            return new DeltaComponent(state);
-        }
+        public IComponent Create(LiveSplitState state) => new DeltaComponent(state);
 
-        public string UpdateName
-        {
-            get { return ComponentName; }
-        }
+        public string UpdateName => ComponentName;
 
-        public string XMLURL
-        {
-#if RELEASE_CANDIDATE
-            get { return "http://livesplit.org/update_rc_sdhjdop/Components/update.LiveSplit.Delta.xml"; }
-#else
-            get { return "http://livesplit.org/update/Components/update.LiveSplit.Delta.xml"; }
-#endif
-        }
+        public string XMLURL => "http://livesplit.org/update/Components/update.LiveSplit.Delta.xml";
 
-        public string UpdateURL
-        {
-#if RELEASE_CANDIDATE
-            get { return "http://livesplit.org/update_rc_sdhjdop/"; }
-#else
-            get { return "http://livesplit.org/update/"; }
-#endif
-        }
+        public string UpdateURL => "http://livesplit.org/update/";
 
-        public Version Version
-        {
-            get { return Version.Parse("1.6"); }
-        }
+        public Version Version => Version.Parse("1.6");
     }
 }

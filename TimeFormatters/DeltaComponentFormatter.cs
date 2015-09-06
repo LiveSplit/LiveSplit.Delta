@@ -12,6 +12,7 @@ namespace LiveSplit.TimeFormatters
             Accuracy = accuracy;
             DropDecimals = dropDecimals;
         }
+
         public string Format(TimeSpan? time)
         {
             var deltaTime = new DeltaTimeFormatter();

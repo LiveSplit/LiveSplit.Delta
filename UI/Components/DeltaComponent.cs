@@ -16,15 +16,12 @@ namespace LiveSplit.UI.Components
         public DeltaSettings Settings { get; set; }
         private DeltaComponentFormatter Formatter { get; set; }
 
-        public float PaddingTop { get { return InternalComponent.PaddingTop; } }
-        public float PaddingLeft { get { return InternalComponent.PaddingLeft; } }
-        public float PaddingBottom { get { return InternalComponent.PaddingBottom; } }
-        public float PaddingRight { get { return InternalComponent.PaddingRight; } }
+        public float PaddingTop => InternalComponent.PaddingTop;
+        public float PaddingLeft => InternalComponent.PaddingLeft;
+        public float PaddingBottom => InternalComponent.PaddingBottom;
+        public float PaddingRight => InternalComponent.PaddingRight;
 
-        public IDictionary<string, Action> ContextMenuControls
-        {
-            get { return null; }
-        }
+        public IDictionary<string, Action> ContextMenuControls => null;
 
         public DeltaComponent(LiveSplitState state)
         {
@@ -94,30 +91,18 @@ namespace LiveSplit.UI.Components
             InternalComponent.DrawHorizontal(g, state, height, clipRegion);
         }
 
-        public float VerticalHeight
-        {
-            get { return InternalComponent.VerticalHeight; }
-        }
+        public float VerticalHeight => InternalComponent.VerticalHeight;
 
-        public float MinimumWidth
-        {
-            get { return InternalComponent.MinimumWidth; }
-        }
+        public float MinimumWidth => InternalComponent.MinimumWidth;
 
-        public float HorizontalWidth
-        {
-            get { return InternalComponent.HorizontalWidth; }
-        }
+        public float HorizontalWidth => InternalComponent.HorizontalWidth;
 
-        public float MinimumHeight
-        {
-            get { return InternalComponent.MinimumHeight; }
-        }
+        public float MinimumHeight => InternalComponent.MinimumHeight;
 
         public string ComponentName
-        {
-            get { return "Delta" + (Settings.Comparison == "Current Comparison" ? "" : " (" + CompositeComparisons.GetShortComparisonName(Settings.Comparison) + ")"); }
-        }
+            => "Delta" + (Settings.Comparison == "Current Comparison" 
+                ? "" 
+                : " (" + CompositeComparisons.GetShortComparisonName(Settings.Comparison) + ")"); 
 
         public Control GetSettingsControl(LayoutMode mode)
         {
@@ -183,9 +168,6 @@ namespace LiveSplit.UI.Components
         {
         }
 
-        public int GetSettingsHashCode()
-        {
-            return Settings.GetSettingsHashCode();
-        }
+        public int GetSettingsHashCode() => Settings.GetSettingsHashCode();
     }
 }
