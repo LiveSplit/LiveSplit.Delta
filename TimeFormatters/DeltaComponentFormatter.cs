@@ -20,7 +20,7 @@ namespace LiveSplit.TimeFormatters
             deltaTime.DropDecimals = DropDecimals;
             var formattedTime = deltaTime.Format(time);
             if (time == null)
-                return "-";
+                return TimeFormatConstants.DASH;
             else
                 return formattedTime;
         }
