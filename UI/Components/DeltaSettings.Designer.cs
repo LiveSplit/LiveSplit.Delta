@@ -34,7 +34,6 @@
             this.rdoSeconds = new System.Windows.Forms.RadioButton();
             this.rdoTenths = new System.Windows.Forms.RadioButton();
             this.rdoHundredths = new System.Windows.Forms.RadioButton();
-            this.chkDropDecimals = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cmbComparison = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -47,6 +46,8 @@
             this.btnColor1 = new System.Windows.Forms.Button();
             this.btnColor2 = new System.Windows.Forms.Button();
             this.chkTwoRows = new System.Windows.Forms.CheckBox();
+            this.chkDropDecimals = new System.Windows.Forms.CheckBox();
+            this.chkLiveDelta = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -80,7 +81,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 249);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 278);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox4
@@ -90,7 +91,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 173);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(456, 73);
+            this.groupBox4.Size = new System.Drawing.Size(456, 102);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Delta Accuracy";
@@ -98,40 +99,42 @@
             // tableLayoutPanel5
             // 
             this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel5.Controls.Add(this.rdoSeconds, 0, 1);
-            this.tableLayoutPanel5.Controls.Add(this.rdoTenths, 1, 1);
-            this.tableLayoutPanel5.Controls.Add(this.rdoHundredths, 2, 1);
+            this.tableLayoutPanel5.Controls.Add(this.chkLiveDelta, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.chkDropDecimals, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.rdoSeconds, 0, 2);
+            this.tableLayoutPanel5.Controls.Add(this.rdoTenths, 1, 2);
+            this.tableLayoutPanel5.Controls.Add(this.rdoHundredths, 2, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(450, 54);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(450, 83);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // rdoSeconds
             // 
             this.rdoSeconds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoSeconds.AutoSize = true;
-            this.rdoSeconds.Location = new System.Drawing.Point(3, 33);
+            this.rdoSeconds.Location = new System.Drawing.Point(3, 62);
             this.rdoSeconds.Name = "rdoSeconds";
             this.rdoSeconds.Size = new System.Drawing.Size(143, 17);
             this.rdoSeconds.TabIndex = 0;
             this.rdoSeconds.TabStop = true;
             this.rdoSeconds.Text = "Seconds";
             this.rdoSeconds.UseVisualStyleBackColor = true;
-            this.rdoSeconds.CheckedChanged += new System.EventHandler(rdoSeconds_CheckedChanged);
+            this.rdoSeconds.CheckedChanged += new System.EventHandler(this.rdoSeconds_CheckedChanged);
             // 
             // rdoTenths
             // 
             this.rdoTenths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoTenths.AutoSize = true;
-            this.rdoTenths.Location = new System.Drawing.Point(152, 33);
+            this.rdoTenths.Location = new System.Drawing.Point(152, 62);
             this.rdoTenths.Name = "rdoTenths";
             this.rdoTenths.Size = new System.Drawing.Size(144, 17);
             this.rdoTenths.TabIndex = 1;
@@ -143,27 +146,14 @@
             // 
             this.rdoHundredths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoHundredths.AutoSize = true;
-            this.rdoHundredths.Location = new System.Drawing.Point(302, 33);
+            this.rdoHundredths.Location = new System.Drawing.Point(302, 62);
             this.rdoHundredths.Name = "rdoHundredths";
             this.rdoHundredths.Size = new System.Drawing.Size(145, 17);
             this.rdoHundredths.TabIndex = 2;
             this.rdoHundredths.TabStop = true;
             this.rdoHundredths.Text = "Hundredths";
             this.rdoHundredths.UseVisualStyleBackColor = true;
-            this.rdoHundredths.CheckedChanged += new System.EventHandler(rdoHundredths_CheckedChanged);
-            // 
-            // chkDropDecimals
-            // 
-            this.chkDropDecimals.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkDropDecimals.AutoSize = true;
-            this.tableLayoutPanel5.SetColumnSpan(this.chkDropDecimals, 2);
-            this.chkDropDecimals.Location = new System.Drawing.Point(7, 6);
-            this.chkDropDecimals.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.chkDropDecimals.Name = "chkDropDecimals";
-            this.chkDropDecimals.Size = new System.Drawing.Size(289, 17);
-            this.chkDropDecimals.TabIndex = 3;
-            this.chkDropDecimals.Text = "Drop Decimals When More Than 1 Minute";
-            this.chkDropDecimals.UseVisualStyleBackColor = true;
+            this.rdoHundredths.CheckedChanged += new System.EventHandler(this.rdoHundredths_CheckedChanged);
             // 
             // label12
             // 
@@ -185,7 +175,7 @@
             this.cmbComparison.Name = "cmbComparison";
             this.cmbComparison.Size = new System.Drawing.Size(297, 21);
             this.cmbComparison.TabIndex = 3;
-            this.cmbComparison.SelectedIndexChanged += new System.EventHandler(cmbComparison_SelectedIndexChanged);
+            this.cmbComparison.SelectedIndexChanged += new System.EventHandler(this.cmbComparison_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -242,7 +232,7 @@
             this.chkOverrideTextColor.TabIndex = 0;
             this.chkOverrideTextColor.Text = "Override Layout Settings";
             this.chkOverrideTextColor.UseVisualStyleBackColor = true;
-            this.chkOverrideTextColor.CheckedChanged += new System.EventHandler(chkOverrideTextColor_CheckedChanged);
+            this.chkOverrideTextColor.CheckedChanged += new System.EventHandler(this.chkOverrideTextColor_CheckedChanged);
             // 
             // label1
             // 
@@ -267,7 +257,7 @@
             this.cmbGradientType.Name = "cmbGradientType";
             this.cmbGradientType.Size = new System.Drawing.Size(239, 21);
             this.cmbGradientType.TabIndex = 2;
-            this.cmbGradientType.SelectedIndexChanged += new System.EventHandler(cmbGradientType_SelectedIndexChanged);
+            this.cmbGradientType.SelectedIndexChanged += new System.EventHandler(this.cmbGradientType_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -317,6 +307,32 @@
             this.chkTwoRows.Text = "Display 2 Rows";
             this.chkTwoRows.UseVisualStyleBackColor = true;
             // 
+            // chkDropDecimals
+            // 
+            this.chkDropDecimals.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkDropDecimals.AutoSize = true;
+            this.tableLayoutPanel5.SetColumnSpan(this.chkDropDecimals, 2);
+            this.chkDropDecimals.Location = new System.Drawing.Point(7, 6);
+            this.chkDropDecimals.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkDropDecimals.Name = "chkDropDecimals";
+            this.chkDropDecimals.Size = new System.Drawing.Size(289, 17);
+            this.chkDropDecimals.TabIndex = 3;
+            this.chkDropDecimals.Text = "Drop Decimals When More Than 1 Minute";
+            this.chkDropDecimals.UseVisualStyleBackColor = true;
+            // 
+            // chkLiveDelta
+            // 
+            this.chkLiveDelta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkLiveDelta.AutoSize = true;
+            this.tableLayoutPanel5.SetColumnSpan(this.chkLiveDelta, 2);
+            this.chkLiveDelta.Location = new System.Drawing.Point(7, 35);
+            this.chkLiveDelta.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkLiveDelta.Name = "chkLiveDelta";
+            this.chkLiveDelta.Size = new System.Drawing.Size(289, 17);
+            this.chkLiveDelta.TabIndex = 4;
+            this.chkLiveDelta.Text = "Always Show Live Delta";
+            this.chkLiveDelta.UseVisualStyleBackColor = true;
+            // 
             // DeltaSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,8 +340,8 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DeltaSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
-            this.Size = new System.Drawing.Size(476, 263);
-            this.Load += new System.EventHandler(DeltaSettings_Load);
+            this.Size = new System.Drawing.Size(476, 292);
+            this.Load += new System.EventHandler(this.DeltaSettings_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -359,5 +375,6 @@
         private System.Windows.Forms.ComboBox cmbComparison;
         private System.Windows.Forms.CheckBox chkTwoRows;
         private System.Windows.Forms.CheckBox chkDropDecimals;
+        private System.Windows.Forms.CheckBox chkLiveDelta;
     }
 }
