@@ -2,7 +2,7 @@
 
 namespace LiveSplit.TimeFormatters
 {
-    class DeltaComponentFormatter : ITimeFormatter
+    public class DeltaComponentFormatter : ITimeFormatter
     {
         public TimeAccuracy Accuracy { get; set; }
         public bool DropDecimals { get; set; }
