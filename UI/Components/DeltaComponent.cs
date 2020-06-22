@@ -140,7 +140,7 @@ namespace LiveSplit.UI.Components
             {
                 TimeSpan? delta = LiveSplitStateHelper.GetLastDelta(state, state.CurrentSplitIndex, comparison, state.CurrentTimingMethod);
                 var liveDelta = state.CurrentTime[state.CurrentTimingMethod] - state.CurrentSplit.Comparisons[comparison][state.CurrentTimingMethod];
-                if (liveDelta > delta || (delta == null && liveDelta > TimeSpan.Zero))
+                if (Settings.LiveDelta || liveDelta > delta || (delta == null && liveDelta > TimeSpan.Zero))
                 {
                     delta = liveDelta;
                     useLiveDelta = true;

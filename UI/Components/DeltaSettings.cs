@@ -15,6 +15,7 @@ namespace LiveSplit.UI.Components
         public bool OverrideTextColor { get; set; }
         public TimeAccuracy Accuracy { get; set; }
         public bool DropDecimals { get; set; }
+        public bool LiveDelta { get; set; }
 
         public Color BackgroundColor { get; set; }
         public Color BackgroundColor2 { get; set; }
@@ -44,6 +45,7 @@ namespace LiveSplit.UI.Components
             Comparison = "Current Comparison";
             Display2Rows = false;
             DropDecimals = true;
+            LiveDelta = false;
 
             chkOverrideTextColor.DataBindings.Add("Checked", this, "OverrideTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnTextColor.DataBindings.Add("BackColor", this, "TextColor", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -52,6 +54,7 @@ namespace LiveSplit.UI.Components
             btnColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
             cmbComparison.DataBindings.Add("SelectedItem", this, "Comparison", false, DataSourceUpdateMode.OnPropertyChanged);
             chkDropDecimals.DataBindings.Add("Checked", this, "DropDecimals", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkLiveDelta.DataBindings.Add("Checked", this, "LiveDelta", false, DataSourceUpdateMode.OnPropertyChanged);
         }
 
         void chkOverrideTextColor_CheckedChanged(object sender, EventArgs e)
@@ -128,6 +131,7 @@ namespace LiveSplit.UI.Components
             Comparison = SettingsHelper.ParseString(element["Comparison"]);
             Display2Rows = SettingsHelper.ParseBool(element["Display2Rows"]);
             DropDecimals = SettingsHelper.ParseBool(element["DropDecimals"]);
+            LiveDelta = SettingsHelper.ParseBool(element["LiveDelta"]);
         }
 
         public XmlNode GetSettings(XmlDocument document)
@@ -144,7 +148,7 @@ namespace LiveSplit.UI.Components
 
         private int CreateSettingsNode(XmlDocument document, XmlElement parent)
         {
-            return SettingsHelper.CreateSetting(document, parent, "Version", "1.4") ^
+            return SettingsHelper.CreateSetting(document, parent, "Version", "1.5") ^
             SettingsHelper.CreateSetting(document, parent, "TextColor", TextColor) ^
             SettingsHelper.CreateSetting(document, parent, "OverrideTextColor", OverrideTextColor) ^
             SettingsHelper.CreateSetting(document, parent, "Accuracy", Accuracy) ^
@@ -153,7 +157,8 @@ namespace LiveSplit.UI.Components
             SettingsHelper.CreateSetting(document, parent, "BackgroundGradient", BackgroundGradient) ^
             SettingsHelper.CreateSetting(document, parent, "Comparison", Comparison) ^
             SettingsHelper.CreateSetting(document, parent, "Display2Rows", Display2Rows) ^
-            SettingsHelper.CreateSetting(document, parent, "DropDecimals", DropDecimals);
+            SettingsHelper.CreateSetting(document, parent, "DropDecimals", DropDecimals) ^
+            SettingsHelper.CreateSetting(document, parent, "LiveDelta", LiveDelta);
         }
 
         private void ColorButtonClick(object sender, EventArgs e)
