@@ -127,14 +127,6 @@ namespace LiveSplit.UI.Components
                 comparison = state.CurrentComparison;
             var comparisonName = comparison.StartsWith("[Race] ") ? comparison.Substring(7) : comparison;
 
-            if (InternalComponent.InformationName != comparisonName)
-            {
-                InternalComponent.AlternateNameText.Clear();
-                InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
-            }
-            InternalComponent.LongestString = comparisonName;
-            InternalComponent.InformationName = comparisonName;
-
             var useLiveDelta = false;
             if (state.CurrentPhase == TimerPhase.Running || state.CurrentPhase == TimerPhase.Paused)
             {
@@ -155,6 +147,19 @@ namespace LiveSplit.UI.Components
             {
                 InternalComponent.TimeValue = null;
             }
+
+            var text = comparisonName;
+            if (Settings.OverrideText)
+            {
+                text = Settings.DifferentialText && InternalComponent.TimeValue < TimeSpan.Zero ? Settings.TextAhead : Settings.TextBehind;
+            }
+            if (InternalComponent.InformationName != text)
+            {
+                InternalComponent.AlternateNameText.Clear();
+                InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
+            }
+            InternalComponent.LongestString = text;
+            InternalComponent.InformationName = text;
 
             var color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, false, comparison, state.CurrentTimingMethod);
             if (color == null)
