@@ -152,8 +152,9 @@ namespace LiveSplit.UI.Components
             if (Settings.OverrideText)
             {
                 text = Settings.DifferentialText && InternalComponent.TimeValue < TimeSpan.Zero ? Settings.TextAhead : Settings.TextBehind;
+                InternalComponent.AlternateNameText.Clear();
             }
-            if (InternalComponent.InformationName != text)
+            else if (InternalComponent.InformationName != text)
             {
                 InternalComponent.AlternateNameText.Clear();
                 InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
