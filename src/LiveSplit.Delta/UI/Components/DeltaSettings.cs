@@ -31,8 +31,8 @@ namespace LiveSplit.UI.Components
 
         public bool OverrideText { get; set; }
         public bool DifferentialText { get; set; }
-        public string TextBehind { get; set; }
-        public string TextAhead { get; set; }
+        public string CustomText { get; set; }
+        public string CustomTextAhead { get; set; }
 
         public LayoutMode Mode { get; set; }
 
@@ -51,8 +51,8 @@ namespace LiveSplit.UI.Components
             DropDecimals = true;
             OverrideText = false;
             DifferentialText = false;
-            TextBehind = "";
-            TextAhead = "";
+            CustomText = "";
+            CustomTextAhead = "";
 
             chkOverrideTextColor.DataBindings.Add("Checked", this, "OverrideTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnTextColor.DataBindings.Add("BackColor", this, "TextColor", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -63,8 +63,8 @@ namespace LiveSplit.UI.Components
             chkDropDecimals.DataBindings.Add("Checked", this, "DropDecimals", false, DataSourceUpdateMode.OnPropertyChanged);
             chkOverrideText.DataBindings.Add("Checked", this, "OverrideText", false, DataSourceUpdateMode.OnPropertyChanged);
             chkDifferentialText.DataBindings.Add("Checked", this, "DifferentialText", false, DataSourceUpdateMode.OnPropertyChanged);
-            txtBehind.DataBindings.Add("Text", this, "TextBehind");
-            txtAhead.DataBindings.Add("Text", this, "TextAhead");
+            txtCustom.DataBindings.Add("Text", this, "CustomText");
+            txtCustomAhead.DataBindings.Add("Text", this, "CustomTextAhead");
         }
 
         void chkOverrideTextColor_CheckedChanged(object sender, EventArgs e)
@@ -144,8 +144,8 @@ namespace LiveSplit.UI.Components
             DropDecimals = SettingsHelper.ParseBool(element["DropDecimals"]);
             OverrideText = SettingsHelper.ParseBool(element["OverrideText"]);
             DifferentialText = SettingsHelper.ParseBool(element["DifferentialText"]);
-            TextBehind = SettingsHelper.ParseString(element["TextBehind"]);
-            TextAhead = SettingsHelper.ParseString(element["TextAhead"]);
+            CustomText = SettingsHelper.ParseString(element["CustomText"]);
+            CustomTextAhead = SettingsHelper.ParseString(element["CustomTextAhead"]);
         }
 
         public XmlNode GetSettings(XmlDocument document)
@@ -174,8 +174,8 @@ namespace LiveSplit.UI.Components
             SettingsHelper.CreateSetting(document, parent, "DropDecimals", DropDecimals) ^
             SettingsHelper.CreateSetting(document, parent, "OverrideText", OverrideText) ^
             SettingsHelper.CreateSetting(document, parent, "DifferentialText", DifferentialText) ^
-            SettingsHelper.CreateSetting(document, parent, "TextBehind", TextBehind) ^
-            SettingsHelper.CreateSetting(document, parent, "TextAhead", TextAhead);
+            SettingsHelper.CreateSetting(document, parent, "CustomText", CustomText) ^
+            SettingsHelper.CreateSetting(document, parent, "CustomTextAhead", CustomTextAhead);
         }
 
         private void ColorButtonClick(object sender, EventArgs e)
@@ -195,9 +195,9 @@ namespace LiveSplit.UI.Components
 
         private void ChangeOverrideTextAppearance()
         {
-            chkDifferentialText.Enabled = label2.Enabled = txtBehind.Enabled = chkOverrideText.Checked;
-            label3.Enabled = txtAhead.Enabled = chkOverrideText.Checked && chkDifferentialText.Checked;
-            label2.Text = chkDifferentialText.Checked ? "Text when behind:" : "Text:";
+            chkDifferentialText.Enabled = lblCustomText.Enabled = txtCustom.Enabled = chkOverrideText.Checked;
+            lblCustomTextAhead.Enabled = txtCustomAhead.Enabled = chkOverrideText.Checked && chkDifferentialText.Checked;
+            lblCustomText.Text = chkDifferentialText.Checked ? "Text when behind:" : "Text:";
         }
     }
 }

@@ -49,12 +49,12 @@
             this.chkTwoRows = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.txtAhead = new System.Windows.Forms.TextBox();
+            this.txtCustomAhead = new System.Windows.Forms.TextBox();
             this.chkOverrideText = new System.Windows.Forms.CheckBox();
             this.chkDifferentialText = new System.Windows.Forms.CheckBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtBehind = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCustomText = new System.Windows.Forms.Label();
+            this.txtCustom = new System.Windows.Forms.TextBox();
+            this.lblCustomTextAhead = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
@@ -136,7 +136,7 @@
             this.rdoSeconds.TabStop = true;
             this.rdoSeconds.Text = "Seconds";
             this.rdoSeconds.UseVisualStyleBackColor = true;
-            this.rdoSeconds.CheckedChanged += new System.EventHandler(rdoSeconds_CheckedChanged);
+            this.rdoSeconds.CheckedChanged += new System.EventHandler(this.rdoSeconds_CheckedChanged);
             // 
             // rdoTenths
             // 
@@ -161,7 +161,7 @@
             this.rdoHundredths.TabStop = true;
             this.rdoHundredths.Text = "Hundredths";
             this.rdoHundredths.UseVisualStyleBackColor = true;
-            this.rdoHundredths.CheckedChanged += new System.EventHandler(rdoHundredths_CheckedChanged);
+            this.rdoHundredths.CheckedChanged += new System.EventHandler(this.rdoHundredths_CheckedChanged);
             // 
             // chkDropDecimals
             // 
@@ -196,7 +196,7 @@
             this.cmbComparison.Name = "cmbComparison";
             this.cmbComparison.Size = new System.Drawing.Size(297, 21);
             this.cmbComparison.TabIndex = 3;
-            this.cmbComparison.SelectedIndexChanged += new System.EventHandler(cmbComparison_SelectedIndexChanged);
+            this.cmbComparison.SelectedIndexChanged += new System.EventHandler(this.cmbComparison_SelectedIndexChanged);
             // 
             // groupBox1
             // 
@@ -253,7 +253,7 @@
             this.chkOverrideTextColor.TabIndex = 0;
             this.chkOverrideTextColor.Text = "Override Layout Settings";
             this.chkOverrideTextColor.UseVisualStyleBackColor = true;
-            this.chkOverrideTextColor.CheckedChanged += new System.EventHandler(chkOverrideTextColor_CheckedChanged);
+            this.chkOverrideTextColor.CheckedChanged += new System.EventHandler(this.chkOverrideTextColor_CheckedChanged);
             // 
             // label1
             // 
@@ -278,7 +278,7 @@
             this.cmbGradientType.Name = "cmbGradientType";
             this.cmbGradientType.Size = new System.Drawing.Size(239, 21);
             this.cmbGradientType.TabIndex = 2;
-            this.cmbGradientType.SelectedIndexChanged += new System.EventHandler(cmbGradientType_SelectedIndexChanged);
+            this.cmbGradientType.SelectedIndexChanged += new System.EventHandler(this.cmbGradientType_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -346,12 +346,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.txtAhead, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.txtCustomAhead, 1, 2);
             this.tableLayoutPanel3.Controls.Add(this.chkOverrideText, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.chkDifferentialText, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.txtBehind, 1, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.lblCustomText, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.txtCustom, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblCustomTextAhead, 0, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -362,14 +362,14 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(450, 87);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
-            // txtAhead
+            // txtCustomAhead
             // 
-            this.txtAhead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.txtAhead, 2);
-            this.txtAhead.Location = new System.Drawing.Point(156, 62);
-            this.txtAhead.Name = "txtAhead";
-            this.txtAhead.Size = new System.Drawing.Size(291, 20);
-            this.txtAhead.TabIndex = 4;
+            this.txtCustomAhead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.txtCustomAhead, 2);
+            this.txtCustomAhead.Location = new System.Drawing.Point(156, 62);
+            this.txtCustomAhead.Name = "txtCustomAhead";
+            this.txtCustomAhead.Size = new System.Drawing.Size(291, 20);
+            this.txtCustomAhead.TabIndex = 4;
             // 
             // chkOverrideText
             // 
@@ -396,34 +396,34 @@
             this.chkDifferentialText.UseVisualStyleBackColor = true;
             this.chkDifferentialText.CheckedChanged += new System.EventHandler(this.chkDifferentialText_CheckedChanged);
             // 
-            // label2
+            // lblCustomText
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(147, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Text:";
+            this.lblCustomText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomText.AutoSize = true;
+            this.lblCustomText.Location = new System.Drawing.Point(3, 37);
+            this.lblCustomText.Name = "lblCustomText";
+            this.lblCustomText.Size = new System.Drawing.Size(147, 13);
+            this.lblCustomText.TabIndex = 2;
+            this.lblCustomText.Text = "Text:";
             // 
-            // txtBehind
+            // txtCustom
             // 
-            this.txtBehind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel3.SetColumnSpan(this.txtBehind, 2);
-            this.txtBehind.Location = new System.Drawing.Point(156, 33);
-            this.txtBehind.Name = "txtBehind";
-            this.txtBehind.Size = new System.Drawing.Size(291, 20);
-            this.txtBehind.TabIndex = 3;
+            this.txtCustom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel3.SetColumnSpan(this.txtCustom, 2);
+            this.txtCustom.Location = new System.Drawing.Point(156, 33);
+            this.txtCustom.Name = "txtCustom";
+            this.txtCustom.Size = new System.Drawing.Size(291, 20);
+            this.txtCustom.TabIndex = 3;
             // 
-            // label3
+            // lblCustomTextAhead
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(147, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Text when ahead:";
+            this.lblCustomTextAhead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomTextAhead.AutoSize = true;
+            this.lblCustomTextAhead.Location = new System.Drawing.Point(3, 66);
+            this.lblCustomTextAhead.Name = "lblCustomTextAhead";
+            this.lblCustomTextAhead.Size = new System.Drawing.Size(147, 13);
+            this.lblCustomTextAhead.TabIndex = 5;
+            this.lblCustomTextAhead.Text = "Text when ahead:";
             // 
             // DeltaSettings
             // 
@@ -433,7 +433,7 @@
             this.Name = "DeltaSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
             this.Size = new System.Drawing.Size(476, 375);
-            this.Load += new System.EventHandler(DeltaSettings_Load);
+            this.Load += new System.EventHandler(this.DeltaSettings_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -474,9 +474,9 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.CheckBox chkOverrideText;
         private System.Windows.Forms.CheckBox chkDifferentialText;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtAhead;
-        private System.Windows.Forms.TextBox txtBehind;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblCustomText;
+        private System.Windows.Forms.TextBox txtCustomAhead;
+        private System.Windows.Forms.TextBox txtCustom;
+        private System.Windows.Forms.Label lblCustomTextAhead;
     }
 }
