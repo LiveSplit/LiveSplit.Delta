@@ -127,14 +127,6 @@ namespace LiveSplit.UI.Components
                 comparison = state.CurrentComparison;
             var comparisonName = comparison.StartsWith("[Race] ") ? comparison.Substring(7) : comparison;
 
-            if (InternalComponent.InformationName != comparisonName)
-            {
-                InternalComponent.AlternateNameText.Clear();
-                InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
-            }
-            InternalComponent.LongestString = comparisonName;
-            InternalComponent.InformationName = comparisonName;
-
             var useLiveDelta = false;
             if (state.CurrentPhase == TimerPhase.Running || state.CurrentPhase == TimerPhase.Paused)
             {
@@ -155,6 +147,32 @@ namespace LiveSplit.UI.Components
             {
                 InternalComponent.TimeValue = null;
             }
+
+            var text = comparisonName;
+            if (Settings.OverrideText)
+            {
+                InternalComponent.AlternateNameText.Clear();
+                if (Settings.DifferentialText)
+                {
+                    text = InternalComponent.TimeValue < TimeSpan.Zero ? Settings.CustomTextAhead : Settings.CustomText;
+                    InternalComponent.LongestString = Settings.CustomText.Length < Settings.CustomTextAhead.Length ? Settings.CustomTextAhead : Settings.CustomText;
+                }
+                else
+                {
+                    text = Settings.CustomText;
+                    InternalComponent.LongestString = text;
+                }
+            }
+            else
+            {
+                InternalComponent.LongestString = text;
+                if (InternalComponent.InformationName != text)
+                {
+                    InternalComponent.AlternateNameText.Clear();
+                    InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
+                }
+            }
+            InternalComponent.InformationName = text;
 
             var color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, false, comparison, state.CurrentTimingMethod);
             if (color == null)

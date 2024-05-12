@@ -47,11 +47,21 @@
             this.btnColor1 = new System.Windows.Forms.Button();
             this.btnColor2 = new System.Windows.Forms.Button();
             this.chkTwoRows = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.txtCustomAhead = new System.Windows.Forms.TextBox();
+            this.chkOverrideText = new System.Windows.Forms.CheckBox();
+            this.chkDifferentialText = new System.Windows.Forms.CheckBox();
+            this.lblCustomText = new System.Windows.Forms.Label();
+            this.txtCustom = new System.Windows.Forms.TextBox();
+            this.lblCustomTextAhead = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -61,15 +71,15 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.groupBox4, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox4, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.label12, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.cmbComparison, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.groupBox1, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.cmbGradientType, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnColor1, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.btnColor2, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.chkTwoRows, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.groupBox2, 0, 4);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(7, 7);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -78,9 +88,9 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 8F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 249);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(462, 365);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // groupBox4
@@ -88,9 +98,9 @@
             this.tableLayoutPanel1.SetColumnSpan(this.groupBox4, 4);
             this.groupBox4.Controls.Add(this.tableLayoutPanel5);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 173);
+            this.groupBox4.Location = new System.Drawing.Point(3, 90);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(456, 73);
+            this.groupBox4.Size = new System.Drawing.Size(456, 77);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Delta Accuracy";
@@ -111,27 +121,27 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(450, 54);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(450, 58);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // rdoSeconds
             // 
             this.rdoSeconds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoSeconds.AutoSize = true;
-            this.rdoSeconds.Location = new System.Drawing.Point(3, 33);
+            this.rdoSeconds.Location = new System.Drawing.Point(3, 35);
             this.rdoSeconds.Name = "rdoSeconds";
             this.rdoSeconds.Size = new System.Drawing.Size(143, 17);
             this.rdoSeconds.TabIndex = 0;
             this.rdoSeconds.TabStop = true;
             this.rdoSeconds.Text = "Seconds";
             this.rdoSeconds.UseVisualStyleBackColor = true;
-            this.rdoSeconds.CheckedChanged += new System.EventHandler(rdoSeconds_CheckedChanged);
+            this.rdoSeconds.CheckedChanged += new System.EventHandler(this.rdoSeconds_CheckedChanged);
             // 
             // rdoTenths
             // 
             this.rdoTenths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoTenths.AutoSize = true;
-            this.rdoTenths.Location = new System.Drawing.Point(152, 33);
+            this.rdoTenths.Location = new System.Drawing.Point(152, 35);
             this.rdoTenths.Name = "rdoTenths";
             this.rdoTenths.Size = new System.Drawing.Size(144, 17);
             this.rdoTenths.TabIndex = 1;
@@ -143,14 +153,14 @@
             // 
             this.rdoHundredths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoHundredths.AutoSize = true;
-            this.rdoHundredths.Location = new System.Drawing.Point(302, 33);
+            this.rdoHundredths.Location = new System.Drawing.Point(302, 35);
             this.rdoHundredths.Name = "rdoHundredths";
             this.rdoHundredths.Size = new System.Drawing.Size(145, 17);
             this.rdoHundredths.TabIndex = 2;
             this.rdoHundredths.TabStop = true;
             this.rdoHundredths.Text = "Hundredths";
             this.rdoHundredths.UseVisualStyleBackColor = true;
-            this.rdoHundredths.CheckedChanged += new System.EventHandler(rdoHundredths_CheckedChanged);
+            this.rdoHundredths.CheckedChanged += new System.EventHandler(this.rdoHundredths_CheckedChanged);
             // 
             // chkDropDecimals
             // 
@@ -185,19 +195,19 @@
             this.cmbComparison.Name = "cmbComparison";
             this.cmbComparison.Size = new System.Drawing.Size(297, 21);
             this.cmbComparison.TabIndex = 3;
-            this.cmbComparison.SelectedIndexChanged += new System.EventHandler(cmbComparison_SelectedIndexChanged);
+            this.cmbComparison.SelectedIndexChanged += new System.EventHandler(this.cmbComparison_SelectedIndexChanged);
             // 
             // groupBox1
             // 
-            this.tableLayoutPanel1.SetColumnSpan(this.groupBox1, 4);
+            this.tableLayoutPanel3.SetColumnSpan(this.groupBox1, 3);
             this.groupBox1.Controls.Add(this.tableLayoutPanel2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 90);
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(456, 77);
+            this.groupBox1.Size = new System.Drawing.Size(444, 77);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Text Color";
+            this.groupBox1.Text = "Color";
             // 
             // tableLayoutPanel2
             // 
@@ -215,7 +225,7 @@
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(450, 58);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(438, 58);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // btnTextColor
@@ -238,11 +248,11 @@
             this.chkOverrideTextColor.Location = new System.Drawing.Point(7, 6);
             this.chkOverrideTextColor.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
             this.chkOverrideTextColor.Name = "chkOverrideTextColor";
-            this.chkOverrideTextColor.Size = new System.Drawing.Size(440, 17);
+            this.chkOverrideTextColor.Size = new System.Drawing.Size(428, 17);
             this.chkOverrideTextColor.TabIndex = 0;
             this.chkOverrideTextColor.Text = "Override Layout Settings";
             this.chkOverrideTextColor.UseVisualStyleBackColor = true;
-            this.chkOverrideTextColor.CheckedChanged += new System.EventHandler(chkOverrideTextColor_CheckedChanged);
+            this.chkOverrideTextColor.CheckedChanged += new System.EventHandler(this.chkOverrideTextColor_CheckedChanged);
             // 
             // label1
             // 
@@ -267,7 +277,7 @@
             this.cmbGradientType.Name = "cmbGradientType";
             this.cmbGradientType.Size = new System.Drawing.Size(239, 21);
             this.cmbGradientType.TabIndex = 2;
-            this.cmbGradientType.SelectedIndexChanged += new System.EventHandler(cmbGradientType_SelectedIndexChanged);
+            this.cmbGradientType.SelectedIndexChanged += new System.EventHandler(this.cmbGradientType_SelectedIndexChanged);
             // 
             // label11
             // 
@@ -317,6 +327,103 @@
             this.chkTwoRows.Text = "Display 2 Rows";
             this.chkTwoRows.UseVisualStyleBackColor = true;
             // 
+            // groupBox2
+            // 
+            this.tableLayoutPanel1.SetColumnSpan(this.groupBox2, 4);
+            this.groupBox2.Controls.Add(this.tableLayoutPanel3);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox2.Location = new System.Drawing.Point(3, 173);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(456, 189);
+            this.groupBox2.TabIndex = 36;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Text";
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 3;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 85F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Controls.Add(this.txtCustomAhead, 1, 3);
+            this.tableLayoutPanel3.Controls.Add(this.chkOverrideText, 0, 1);
+            this.tableLayoutPanel3.Controls.Add(this.chkDifferentialText, 2, 1);
+            this.tableLayoutPanel3.Controls.Add(this.lblCustomText, 0, 2);
+            this.tableLayoutPanel3.Controls.Add(this.txtCustom, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.lblCustomTextAhead, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.groupBox1, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(450, 170);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // txtCustomAhead
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.txtCustomAhead, 2);
+            this.txtCustomAhead.Location = new System.Drawing.Point(156, 144);
+            this.txtCustomAhead.Name = "txtCustomAhead";
+            this.txtCustomAhead.Size = new System.Drawing.Size(291, 20);
+            this.txtCustomAhead.TabIndex = 4;
+            // 
+            // chkOverrideText
+            // 
+            this.chkOverrideText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkOverrideText.AutoSize = true;
+            this.tableLayoutPanel3.SetColumnSpan(this.chkOverrideText, 2);
+            this.chkOverrideText.Location = new System.Drawing.Point(3, 89);
+            this.chkOverrideText.Name = "chkOverrideText";
+            this.chkOverrideText.Size = new System.Drawing.Size(232, 17);
+            this.chkOverrideText.TabIndex = 0;
+            this.chkOverrideText.Text = "Override Default Label";
+            this.chkOverrideText.UseVisualStyleBackColor = true;
+            this.chkOverrideText.CheckedChanged += new System.EventHandler(this.chkOverrideText_CheckedChanged);
+            // 
+            // chkDifferentialText
+            // 
+            this.chkDifferentialText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkDifferentialText.AutoSize = true;
+            this.chkDifferentialText.Location = new System.Drawing.Point(241, 89);
+            this.chkDifferentialText.Name = "chkDifferentialText";
+            this.chkDifferentialText.Size = new System.Drawing.Size(206, 17);
+            this.chkDifferentialText.TabIndex = 1;
+            this.chkDifferentialText.Text = "Different Label When Ahead";
+            this.chkDifferentialText.UseVisualStyleBackColor = true;
+            this.chkDifferentialText.CheckedChanged += new System.EventHandler(this.chkDifferentialText_CheckedChanged);
+            // 
+            // lblCustomText
+            // 
+            this.lblCustomText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomText.AutoSize = true;
+            this.lblCustomText.Location = new System.Drawing.Point(3, 120);
+            this.lblCustomText.Name = "lblCustomText";
+            this.lblCustomText.Size = new System.Drawing.Size(147, 13);
+            this.lblCustomText.TabIndex = 2;
+            this.lblCustomText.Text = "Label:";
+            // 
+            // txtCustom
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.txtCustom, 2);
+            this.txtCustom.Location = new System.Drawing.Point(156, 115);
+            this.txtCustom.Name = "txtCustom";
+            this.txtCustom.Size = new System.Drawing.Size(291, 20);
+            this.txtCustom.TabIndex = 3;
+            // 
+            // lblCustomTextAhead
+            // 
+            this.lblCustomTextAhead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCustomTextAhead.AutoSize = true;
+            this.lblCustomTextAhead.Location = new System.Drawing.Point(3, 149);
+            this.lblCustomTextAhead.Name = "lblCustomTextAhead";
+            this.lblCustomTextAhead.Size = new System.Drawing.Size(147, 13);
+            this.lblCustomTextAhead.TabIndex = 5;
+            this.lblCustomTextAhead.Text = "Label When Ahead:";
+            // 
             // DeltaSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,8 +431,8 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "DeltaSettings";
             this.Padding = new System.Windows.Forms.Padding(7);
-            this.Size = new System.Drawing.Size(476, 263);
-            this.Load += new System.EventHandler(DeltaSettings_Load);
+            this.Size = new System.Drawing.Size(476, 379);
+            this.Load += new System.EventHandler(this.DeltaSettings_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
@@ -334,6 +441,9 @@
             this.groupBox1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -359,5 +469,13 @@
         private System.Windows.Forms.ComboBox cmbComparison;
         private System.Windows.Forms.CheckBox chkTwoRows;
         private System.Windows.Forms.CheckBox chkDropDecimals;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.CheckBox chkOverrideText;
+        private System.Windows.Forms.CheckBox chkDifferentialText;
+        private System.Windows.Forms.Label lblCustomText;
+        private System.Windows.Forms.TextBox txtCustomAhead;
+        private System.Windows.Forms.TextBox txtCustom;
+        private System.Windows.Forms.Label lblCustomTextAhead;
     }
 }

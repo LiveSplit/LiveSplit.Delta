@@ -29,6 +29,11 @@ namespace LiveSplit.UI.Components
         public LiveSplitState CurrentState { get; set; }
         public bool Display2Rows { get; set; }
 
+        public bool OverrideText { get; set; }
+        public bool DifferentialText { get; set; }
+        public string CustomText { get; set; }
+        public string CustomTextAhead { get; set; }
+
         public LayoutMode Mode { get; set; }
 
         public DeltaSettings()
@@ -44,6 +49,10 @@ namespace LiveSplit.UI.Components
             Comparison = "Current Comparison";
             Display2Rows = false;
             DropDecimals = true;
+            OverrideText = false;
+            DifferentialText = false;
+            CustomText = "";
+            CustomTextAhead = "";
 
             chkOverrideTextColor.DataBindings.Add("Checked", this, "OverrideTextColor", false, DataSourceUpdateMode.OnPropertyChanged);
             btnTextColor.DataBindings.Add("BackColor", this, "TextColor", false, DataSourceUpdateMode.OnPropertyChanged);
@@ -52,6 +61,10 @@ namespace LiveSplit.UI.Components
             btnColor2.DataBindings.Add("BackColor", this, "BackgroundColor2", false, DataSourceUpdateMode.OnPropertyChanged);
             cmbComparison.DataBindings.Add("SelectedItem", this, "Comparison", false, DataSourceUpdateMode.OnPropertyChanged);
             chkDropDecimals.DataBindings.Add("Checked", this, "DropDecimals", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkOverrideText.DataBindings.Add("Checked", this, "OverrideText", false, DataSourceUpdateMode.OnPropertyChanged);
+            chkDifferentialText.DataBindings.Add("Checked", this, "DifferentialText", false, DataSourceUpdateMode.OnPropertyChanged);
+            txtCustom.DataBindings.Add("Text", this, "CustomText");
+            txtCustomAhead.DataBindings.Add("Text", this, "CustomTextAhead");
         }
 
         void chkOverrideTextColor_CheckedChanged(object sender, EventArgs e)
@@ -86,6 +99,7 @@ namespace LiveSplit.UI.Components
                 chkTwoRows.DataBindings.Clear();
                 chkTwoRows.DataBindings.Add("Checked", this, "Display2Rows", false, DataSourceUpdateMode.OnPropertyChanged);
             }
+            ChangeOverrideTextAppearance();
         }
 
         void cmbGradientType_SelectedIndexChanged(object sender, EventArgs e)
@@ -128,6 +142,10 @@ namespace LiveSplit.UI.Components
             Comparison = SettingsHelper.ParseString(element["Comparison"]);
             Display2Rows = SettingsHelper.ParseBool(element["Display2Rows"]);
             DropDecimals = SettingsHelper.ParseBool(element["DropDecimals"]);
+            OverrideText = SettingsHelper.ParseBool(element["OverrideText"]);
+            DifferentialText = SettingsHelper.ParseBool(element["DifferentialText"]);
+            CustomText = SettingsHelper.ParseString(element["CustomText"]);
+            CustomTextAhead = SettingsHelper.ParseString(element["CustomTextAhead"]);
         }
 
         public XmlNode GetSettings(XmlDocument document)
@@ -153,12 +171,33 @@ namespace LiveSplit.UI.Components
             SettingsHelper.CreateSetting(document, parent, "BackgroundGradient", BackgroundGradient) ^
             SettingsHelper.CreateSetting(document, parent, "Comparison", Comparison) ^
             SettingsHelper.CreateSetting(document, parent, "Display2Rows", Display2Rows) ^
-            SettingsHelper.CreateSetting(document, parent, "DropDecimals", DropDecimals);
+            SettingsHelper.CreateSetting(document, parent, "DropDecimals", DropDecimals) ^
+            SettingsHelper.CreateSetting(document, parent, "OverrideText", OverrideText) ^
+            SettingsHelper.CreateSetting(document, parent, "DifferentialText", DifferentialText) ^
+            SettingsHelper.CreateSetting(document, parent, "CustomText", CustomText) ^
+            SettingsHelper.CreateSetting(document, parent, "CustomTextAhead", CustomTextAhead);
         }
 
         private void ColorButtonClick(object sender, EventArgs e)
         {
             SettingsHelper.ColorButtonClick((Button)sender, this);
+        }
+
+        private void chkOverrideText_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeOverrideTextAppearance();
+        }
+
+        private void chkDifferentialText_CheckedChanged(object sender, EventArgs e)
+        {
+            ChangeOverrideTextAppearance();
+        }
+
+        private void ChangeOverrideTextAppearance()
+        {
+            chkDifferentialText.Enabled = lblCustomText.Enabled = txtCustom.Enabled = chkOverrideText.Checked;
+            lblCustomTextAhead.Enabled = txtCustomAhead.Enabled = chkOverrideText.Checked && chkDifferentialText.Checked;
+            lblCustomText.Text = chkDifferentialText.Checked ? "Label When Behind:" : "Label:";
         }
     }
 }
