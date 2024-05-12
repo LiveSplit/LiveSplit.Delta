@@ -197,7 +197,7 @@ namespace LiveSplit.UI.Components
         {
             chkDifferentialText.Enabled = lblCustomText.Enabled = txtCustom.Enabled = chkOverrideText.Checked;
             lblCustomTextAhead.Enabled = txtCustomAhead.Enabled = chkOverrideText.Checked && chkDifferentialText.Checked;
-            lblCustomText.Text = chkDifferentialText.Checked ? "Text when behind:" : "Text:";
+            lblCustomText.Text = chkDifferentialText.Checked ? "Label When Behind:" : "Label:";
         }
     }
 }
