@@ -151,15 +151,27 @@ namespace LiveSplit.UI.Components
             var text = comparisonName;
             if (Settings.OverrideText)
             {
-                text = Settings.DifferentialText && InternalComponent.TimeValue < TimeSpan.Zero ? Settings.CustomTextAhead : Settings.CustomText;
                 InternalComponent.AlternateNameText.Clear();
+                if (Settings.DifferentialText)
+                {
+                    text = InternalComponent.TimeValue < TimeSpan.Zero ? Settings.CustomTextAhead : Settings.CustomText;
+                    InternalComponent.LongestString = Settings.CustomText.Length < Settings.CustomTextAhead.Length ? Settings.CustomTextAhead : Settings.CustomText;
+                }
+                else
+                {
+                    text = Settings.CustomText;
+                    InternalComponent.LongestString = text;
+                }
             }
-            else if (InternalComponent.InformationName != text)
+            else
             {
-                InternalComponent.AlternateNameText.Clear();
-                InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
+                InternalComponent.LongestString = text;
+                if (InternalComponent.InformationName != text)
+                {
+                    InternalComponent.AlternateNameText.Clear();
+                    InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
+                }
             }
-            InternalComponent.LongestString = text;
             InternalComponent.InformationName = text;
 
             var color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, false, comparison, state.CurrentTimingMethod);
