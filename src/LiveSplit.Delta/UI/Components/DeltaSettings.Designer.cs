@@ -37,11 +37,6 @@
             this.chkDropDecimals = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.cmbComparison = new System.Windows.Forms.ComboBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnTextColor = new System.Windows.Forms.Button();
-            this.chkOverrideTextColor = new System.Windows.Forms.CheckBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.cmbGradientType = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.btnColor1 = new System.Windows.Forms.Button();
@@ -49,19 +44,25 @@
             this.chkTwoRows = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnTextColor = new System.Windows.Forms.Button();
+            this.chkOverrideTextColor = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtCustomAhead = new System.Windows.Forms.TextBox();
             this.chkOverrideText = new System.Windows.Forms.CheckBox();
             this.chkDifferentialText = new System.Windows.Forms.CheckBox();
             this.lblCustomText = new System.Windows.Forms.Label();
             this.txtCustom = new System.Windows.Forms.TextBox();
             this.lblCustomTextAhead = new System.Windows.Forms.Label();
+            this.rdoMilliseconds = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -107,10 +108,12 @@
             // 
             // tableLayoutPanel5
             // 
-            this.tableLayoutPanel5.ColumnCount = 3;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tableLayoutPanel5.ColumnCount = 4;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel5.Controls.Add(this.rdoMilliseconds, 3, 1);
             this.tableLayoutPanel5.Controls.Add(this.rdoSeconds, 0, 1);
             this.tableLayoutPanel5.Controls.Add(this.rdoTenths, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.rdoHundredths, 2, 1);
@@ -130,7 +133,7 @@
             this.rdoSeconds.AutoSize = true;
             this.rdoSeconds.Location = new System.Drawing.Point(3, 35);
             this.rdoSeconds.Name = "rdoSeconds";
-            this.rdoSeconds.Size = new System.Drawing.Size(143, 17);
+            this.rdoSeconds.Size = new System.Drawing.Size(106, 17);
             this.rdoSeconds.TabIndex = 0;
             this.rdoSeconds.TabStop = true;
             this.rdoSeconds.Text = "Seconds";
@@ -141,21 +144,22 @@
             // 
             this.rdoTenths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoTenths.AutoSize = true;
-            this.rdoTenths.Location = new System.Drawing.Point(152, 35);
+            this.rdoTenths.Location = new System.Drawing.Point(115, 35);
             this.rdoTenths.Name = "rdoTenths";
-            this.rdoTenths.Size = new System.Drawing.Size(144, 17);
+            this.rdoTenths.Size = new System.Drawing.Size(106, 17);
             this.rdoTenths.TabIndex = 1;
             this.rdoTenths.TabStop = true;
             this.rdoTenths.Text = "Tenths";
             this.rdoTenths.UseVisualStyleBackColor = true;
+            this.rdoTenths.CheckedChanged += new System.EventHandler(this.rdoTenths_CheckedChanged);
             // 
             // rdoHundredths
             // 
             this.rdoHundredths.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.rdoHundredths.AutoSize = true;
-            this.rdoHundredths.Location = new System.Drawing.Point(302, 35);
+            this.rdoHundredths.Location = new System.Drawing.Point(227, 35);
             this.rdoHundredths.Name = "rdoHundredths";
-            this.rdoHundredths.Size = new System.Drawing.Size(145, 17);
+            this.rdoHundredths.Size = new System.Drawing.Size(106, 17);
             this.rdoHundredths.TabIndex = 2;
             this.rdoHundredths.TabStop = true;
             this.rdoHundredths.Text = "Hundredths";
@@ -166,11 +170,11 @@
             // 
             this.chkDropDecimals.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chkDropDecimals.AutoSize = true;
-            this.tableLayoutPanel5.SetColumnSpan(this.chkDropDecimals, 2);
+            this.tableLayoutPanel5.SetColumnSpan(this.chkDropDecimals, 4);
             this.chkDropDecimals.Location = new System.Drawing.Point(7, 6);
             this.chkDropDecimals.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
             this.chkDropDecimals.Name = "chkDropDecimals";
-            this.chkDropDecimals.Size = new System.Drawing.Size(289, 17);
+            this.chkDropDecimals.Size = new System.Drawing.Size(440, 17);
             this.chkDropDecimals.TabIndex = 3;
             this.chkDropDecimals.Text = "Drop Decimals When More Than 1 Minute";
             this.chkDropDecimals.UseVisualStyleBackColor = true;
@@ -196,73 +200,6 @@
             this.cmbComparison.Size = new System.Drawing.Size(297, 21);
             this.cmbComparison.TabIndex = 3;
             this.cmbComparison.SelectedIndexChanged += new System.EventHandler(this.cmbComparison_SelectedIndexChanged);
-            // 
-            // groupBox1
-            // 
-            this.tableLayoutPanel3.SetColumnSpan(this.groupBox1, 3);
-            this.groupBox1.Controls.Add(this.tableLayoutPanel2);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(444, 77);
-            this.groupBox1.TabIndex = 5;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Color";
-            // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 3;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.btnTextColor, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.chkOverrideTextColor, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(438, 58);
-            this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // btnTextColor
-            // 
-            this.btnTextColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnTextColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTextColor.Location = new System.Drawing.Point(156, 32);
-            this.btnTextColor.Name = "btnTextColor";
-            this.btnTextColor.Size = new System.Drawing.Size(23, 23);
-            this.btnTextColor.TabIndex = 1;
-            this.btnTextColor.UseVisualStyleBackColor = false;
-            this.btnTextColor.Click += new System.EventHandler(this.ColorButtonClick);
-            // 
-            // chkOverrideTextColor
-            // 
-            this.chkOverrideTextColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkOverrideTextColor.AutoSize = true;
-            this.tableLayoutPanel2.SetColumnSpan(this.chkOverrideTextColor, 3);
-            this.chkOverrideTextColor.Location = new System.Drawing.Point(7, 6);
-            this.chkOverrideTextColor.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
-            this.chkOverrideTextColor.Name = "chkOverrideTextColor";
-            this.chkOverrideTextColor.Size = new System.Drawing.Size(428, 17);
-            this.chkOverrideTextColor.TabIndex = 0;
-            this.chkOverrideTextColor.Text = "Override Layout Settings";
-            this.chkOverrideTextColor.UseVisualStyleBackColor = true;
-            this.chkOverrideTextColor.CheckedChanged += new System.EventHandler(this.chkOverrideTextColor_CheckedChanged);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Color:";
             // 
             // cmbGradientType
             // 
@@ -363,6 +300,73 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(450, 170);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
+            // groupBox1
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.groupBox1, 3);
+            this.groupBox1.Controls.Add(this.tableLayoutPanel2);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(444, 77);
+            this.groupBox1.TabIndex = 5;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Color";
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 153F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 95F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.btnTextColor, 1, 1);
+            this.tableLayoutPanel2.Controls.Add(this.chkOverrideTextColor, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 1);
+            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 16);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 2;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(438, 58);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // btnTextColor
+            // 
+            this.btnTextColor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnTextColor.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnTextColor.Location = new System.Drawing.Point(156, 32);
+            this.btnTextColor.Name = "btnTextColor";
+            this.btnTextColor.Size = new System.Drawing.Size(23, 23);
+            this.btnTextColor.TabIndex = 1;
+            this.btnTextColor.UseVisualStyleBackColor = false;
+            this.btnTextColor.Click += new System.EventHandler(this.ColorButtonClick);
+            // 
+            // chkOverrideTextColor
+            // 
+            this.chkOverrideTextColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkOverrideTextColor.AutoSize = true;
+            this.tableLayoutPanel2.SetColumnSpan(this.chkOverrideTextColor, 3);
+            this.chkOverrideTextColor.Location = new System.Drawing.Point(7, 6);
+            this.chkOverrideTextColor.Margin = new System.Windows.Forms.Padding(7, 3, 3, 3);
+            this.chkOverrideTextColor.Name = "chkOverrideTextColor";
+            this.chkOverrideTextColor.Size = new System.Drawing.Size(428, 17);
+            this.chkOverrideTextColor.TabIndex = 0;
+            this.chkOverrideTextColor.Text = "Override Layout Settings";
+            this.chkOverrideTextColor.UseVisualStyleBackColor = true;
+            this.chkOverrideTextColor.CheckedChanged += new System.EventHandler(this.chkOverrideTextColor_CheckedChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 37);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Color:";
+            // 
             // txtCustomAhead
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.txtCustomAhead, 2);
@@ -424,6 +428,18 @@
             this.lblCustomTextAhead.TabIndex = 5;
             this.lblCustomTextAhead.Text = "Label When Ahead:";
             // 
+            // rdoMilliseconds
+            // 
+            this.rdoMilliseconds.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.rdoMilliseconds.AutoSize = true;
+            this.rdoMilliseconds.Location = new System.Drawing.Point(339, 35);
+            this.rdoMilliseconds.Name = "rdoMilliseconds";
+            this.rdoMilliseconds.Size = new System.Drawing.Size(108, 17);
+            this.rdoMilliseconds.TabIndex = 4;
+            this.rdoMilliseconds.TabStop = true;
+            this.rdoMilliseconds.Text = "Milliseconds";
+            this.rdoMilliseconds.UseVisualStyleBackColor = true;
+            // 
             // DeltaSettings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -438,12 +454,12 @@
             this.groupBox4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -477,5 +493,6 @@
         private System.Windows.Forms.TextBox txtCustomAhead;
         private System.Windows.Forms.TextBox txtCustom;
         private System.Windows.Forms.Label lblCustomTextAhead;
+        private System.Windows.Forms.RadioButton rdoMilliseconds;
     }
 }
