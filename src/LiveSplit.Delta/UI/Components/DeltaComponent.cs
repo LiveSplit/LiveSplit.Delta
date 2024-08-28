@@ -14,7 +14,7 @@ namespace LiveSplit.UI.Components
     {
         protected InfoTimeComponent InternalComponent { get; set; }
         public DeltaSettings Settings { get; set; }
-        private DeltaComponentFormatter Formatter { get; set; }
+        private GeneralTimeFormatter Formatter { get; set; }
 
         public float PaddingTop => InternalComponent.PaddingTop;
         public float PaddingLeft => InternalComponent.PaddingLeft;
@@ -29,7 +29,12 @@ namespace LiveSplit.UI.Components
             {
                 CurrentState = state
             };
-            Formatter = new DeltaComponentFormatter(Settings.Accuracy, Settings.DropDecimals);
+            Formatter = new GeneralTimeFormatter() 
+            {
+                NullFormat = NullFormat.Dash,
+                Accuracy = Settings.Accuracy,
+                DropDecimals = Settings.DropDecimals,
+            };
             InternalComponent = new InfoTimeComponent(null, null, Formatter);
             state.ComparisonRenamed += state_ComparisonRenamed;
         }
