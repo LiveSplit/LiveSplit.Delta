@@ -137,7 +137,7 @@ public class DeltaComponent : IComponent
         var comparisonName = comparison.StartsWith("[Race] ") ? comparison.Substring(7) : comparison;
 
         var useLiveDelta = false;
-        if (state.CurrentPhase == TimerPhase.Running || state.CurrentPhase == TimerPhase.Paused)
+        if (state.CurrentPhase is TimerPhase.Running or TimerPhase.Paused)
         {
             TimeSpan? delta = LiveSplitStateHelper.GetLastDelta(state, state.CurrentSplitIndex, comparison, state.CurrentTimingMethod);
             var liveDelta = state.CurrentTime[state.CurrentTimingMethod] - state.CurrentSplit.Comparisons[comparison][state.CurrentTimingMethod];
