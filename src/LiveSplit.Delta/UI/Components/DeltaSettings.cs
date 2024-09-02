@@ -85,7 +85,10 @@ public partial class DeltaSettings : UserControl
         cmbComparison.Items.Add("Current Comparison");
         cmbComparison.Items.AddRange(CurrentState.Run.Comparisons.Where(x => x != NoneComparisonGenerator.ComparisonName).ToArray());
         if (!cmbComparison.Items.Contains(Comparison))
+        {
             cmbComparison.Items.Add(Comparison);
+        }
+
         rdoSeconds.Checked = Accuracy == TimeAccuracy.Seconds;
         rdoTenths.Checked = Accuracy == TimeAccuracy.Tenths;
         rdoHundredths.Checked = Accuracy == TimeAccuracy.Hundredths;
@@ -101,6 +104,7 @@ public partial class DeltaSettings : UserControl
             chkTwoRows.DataBindings.Clear();
             chkTwoRows.DataBindings.Add("Checked", this, "Display2Rows", false, DataSourceUpdateMode.OnPropertyChanged);
         }
+
         ChangeOverrideTextAppearance();
     }
 
@@ -130,13 +134,21 @@ public partial class DeltaSettings : UserControl
     private void UpdateAccuracy()
     {
         if (rdoSeconds.Checked)
+        {
             Accuracy = TimeAccuracy.Seconds;
+        }
         else if (rdoTenths.Checked)
+        {
             Accuracy = TimeAccuracy.Tenths;
+        }
         else if (rdoHundredths.Checked)
+        {
             Accuracy = TimeAccuracy.Hundredths;
+        }
         else
+        {
             Accuracy = TimeAccuracy.Milliseconds;
+        }
     }
 
     public void SetSettings(XmlNode node)

@@ -67,8 +67,8 @@ public class DeltaComponent : IComponent
     private void DrawBackground(Graphics g, LiveSplitState state, float width, float height)
     {
         if (Settings.BackgroundColor.A > 0
-            || Settings.BackgroundGradient != GradientType.Plain
-            && Settings.BackgroundColor2.A > 0)
+            || (Settings.BackgroundGradient != GradientType.Plain
+            && Settings.BackgroundColor2.A > 0))
         {
             var gradientBrush = new LinearGradientBrush(
                         new PointF(0, 0),
@@ -130,7 +130,10 @@ public class DeltaComponent : IComponent
     {
         var comparison = Settings.Comparison == "Current Comparison" ? state.CurrentComparison : Settings.Comparison;
         if (!state.Run.Comparisons.Contains(comparison))
+        {
             comparison = state.CurrentComparison;
+        }
+
         var comparisonName = comparison.StartsWith("[Race] ") ? comparison.Substring(7) : comparison;
 
         var useLiveDelta = false;
@@ -143,6 +146,7 @@ public class DeltaComponent : IComponent
                 delta = liveDelta;
                 useLiveDelta = true;
             }
+
             InternalComponent.TimeValue = delta;
         }
         else if (state.CurrentPhase == TimerPhase.Ended)
@@ -178,11 +182,15 @@ public class DeltaComponent : IComponent
                 InternalComponent.AlternateNameText.Add(CompositeComparisons.GetShortComparisonName(comparison));
             }
         }
+
         InternalComponent.InformationName = text;
 
         var color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, false, comparison, state.CurrentTimingMethod);
         if (color == null)
+        {
             color = Settings.OverrideTextColor ? Settings.TextColor : state.LayoutSettings.TextColor;
+        }
+
         InternalComponent.ValueLabel.ForeColor = color.Value;
 
         InternalComponent.Update(invalidator, state, width, height, mode);
