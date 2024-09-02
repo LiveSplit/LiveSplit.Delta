@@ -134,7 +134,7 @@ public class DeltaComponent : IComponent
             comparison = state.CurrentComparison;
         }
 
-        string comparisonName = comparison.StartsWith("[Race] ") ? comparison.Substring(7) : comparison;
+        string comparisonName = comparison.StartsWith("[Race] ") ? comparison[7..] : comparison;
 
         bool useLiveDelta = false;
         if (state.CurrentPhase is TimerPhase.Running or TimerPhase.Paused)
