@@ -128,19 +128,19 @@ public class DeltaComponent : IComponent
 
     public void Update(IInvalidator invalidator, LiveSplitState state, float width, float height, LayoutMode mode)
     {
-        var comparison = Settings.Comparison == "Current Comparison" ? state.CurrentComparison : Settings.Comparison;
+        string comparison = Settings.Comparison == "Current Comparison" ? state.CurrentComparison : Settings.Comparison;
         if (!state.Run.Comparisons.Contains(comparison))
         {
             comparison = state.CurrentComparison;
         }
 
-        var comparisonName = comparison.StartsWith("[Race] ") ? comparison.Substring(7) : comparison;
+        string comparisonName = comparison.StartsWith("[Race] ") ? comparison.Substring(7) : comparison;
 
-        var useLiveDelta = false;
+        bool useLiveDelta = false;
         if (state.CurrentPhase is TimerPhase.Running or TimerPhase.Paused)
         {
             TimeSpan? delta = LiveSplitStateHelper.GetLastDelta(state, state.CurrentSplitIndex, comparison, state.CurrentTimingMethod);
-            var liveDelta = state.CurrentTime[state.CurrentTimingMethod] - state.CurrentSplit.Comparisons[comparison][state.CurrentTimingMethod];
+            TimeSpan? liveDelta = state.CurrentTime[state.CurrentTimingMethod] - state.CurrentSplit.Comparisons[comparison][state.CurrentTimingMethod];
             if (liveDelta > delta || (delta == null && liveDelta > TimeSpan.Zero))
             {
                 delta = liveDelta;
@@ -158,7 +158,7 @@ public class DeltaComponent : IComponent
             InternalComponent.TimeValue = null;
         }
 
-        var text = comparisonName;
+        string text = comparisonName;
         if (Settings.OverrideText)
         {
             InternalComponent.AlternateNameText.Clear();
@@ -185,7 +185,7 @@ public class DeltaComponent : IComponent
 
         InternalComponent.InformationName = text;
 
-        var color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, false, comparison, state.CurrentTimingMethod);
+        Color? color = LiveSplitStateHelper.GetSplitColor(state, InternalComponent.TimeValue, state.CurrentSplitIndex - (useLiveDelta ? 0 : 1), true, false, comparison, state.CurrentTimingMethod);
         if (color == null)
         {
             color = Settings.OverrideTextColor ? Settings.TextColor : state.LayoutSettings.TextColor;
