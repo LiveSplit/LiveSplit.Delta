@@ -16,7 +16,10 @@ public class DeltaFactory : IComponentFactory
 
     public ComponentCategory Category => ComponentCategory.Information;
 
-    public IComponent Create(LiveSplitState state) => new DeltaComponent(state);
+    public IComponent Create(LiveSplitState state)
+    {
+        return new DeltaComponent(state);
+    }
 
     public string UpdateName => ComponentName;
 
