@@ -35,6 +35,7 @@ public class DeltaComponent : IComponent
             NullFormat = NullFormat.Dash,
             Accuracy = Settings.Accuracy,
             DropDecimals = Settings.DropDecimals,
+            ShowPlus = true,
         };
         InternalComponent = new InfoTimeComponent(null, null, Formatter);
         state.ComparisonRenamed += state_ComparisonRenamed;
